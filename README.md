@@ -1,1 +1,2 @@
-# TransferFunctionGPKernel
+# TransferFunctionGPKernel.jl
+# TransferFunctionGPKernel.jl
