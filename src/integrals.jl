@@ -116,7 +116,7 @@ function verify_1(; lowerx = lowerx, upperx = upperx, lowery = lowery, uppery = 
 
 
     # return exact and numerical results to verify
-    integralfunction_1(lowerx = lowerx, upperx = upperx, lowery = lowery, uppery = uppery, ℓ = ℓ), num, h.integral
+    integralfunction_1(lowerx = lowerx, upperx = upperx, lowery = lowery, uppery = uppery, ℓ = ℓ), num, h.integral[1]
 
 end
 
@@ -285,7 +285,7 @@ function verify_2(; lowerx = lowerx, upperx = upperx, lowery = lowery, uppery = 
 
 
     # return exact and numerical results to verify
-    integralfunction_2(lowerx = lowerx, upperx = upperx, lowery = lowery, uppery = uppery, ℓ = ℓ), num, h.integral
+    integralfunction_2(lowerx = lowerx, upperx = upperx, lowery = lowery, uppery = uppery, ℓ = ℓ), num, h.integral[1]
 
 end
 
@@ -456,6 +456,6 @@ function verify_3(; lowerx = lowerx, upperx = upperx, lowery = lowery, uppery = 
 
 
     # return exact and numerical results to verify
-    integralfunction_3(lowerx = lowerx, upperx = upperx, lowery = lowery, uppery = uppery, ℓ = ℓ), num, h.integral
+    integralfunction_3(lowerx = lowerx, upperx = upperx, lowery = lowery, uppery = uppery, ℓ = ℓ), num, h.integral[1]
 
 end
