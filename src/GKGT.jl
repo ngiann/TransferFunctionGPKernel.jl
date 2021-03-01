@@ -2,9 +2,9 @@
 #   Type Definition    #
 ########################
 
-@everywhere abstract type AbstractGKGᵀ end
+abstract type AbstractGKGᵀ end
 
-@everywhere mutable struct symGKGᵀ <: AbstractGKGᵀ
+mutable struct symGKGᵀ <: AbstractGKGᵀ
 
     support::LinRange{Float64}
 

@@ -1,12 +1,12 @@
 using Optim, PyPlot
 
-@everywhere using LinearAlgebra, Cuba, ProgressMeter, TransferFunctions
+using LinearAlgebra, Cuba, ProgressMeter, TransferFunctions
 
 
-@everywhere κ(d, r) = exp(- d^2 / (2*r^2))
+κ(d, r) = exp(- d^2 / (2*r^2))
 
 
-@everywhere function symmetricconvolution_cuba(; g = g, κ = κ, tᵢ = tᵢ, tⱼ = tⱼ)
+function symmetricconvolution_cuba(; g = g, κ = κ, tᵢ = tᵢ, tⱼ = tⱼ)
 
     offset = 35
 
@@ -38,7 +38,7 @@ end
 #-------------------------------------------------------------------------------
 
 
-@everywhere function nonsymmetricconvolution(; gₖ = gₖ, gₗ = gₗ, κ = κ, tᵢ = tᵢ, tⱼ = tⱼ)
+function nonsymmetricconvolution(; gₖ = gₖ, gₗ = gₗ, κ = κ, tᵢ = tᵢ, tⱼ = tⱼ)
 
     offset = 35
 
