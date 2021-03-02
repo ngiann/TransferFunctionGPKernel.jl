@@ -1,4 +1,4 @@
-@everywhere module TransferFunctionGPKernel
+module TransferFunctionGPKernel
 
     export symGKGᵀ, testme
 
