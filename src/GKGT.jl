@@ -20,6 +20,8 @@ mutable struct symGKGᵀ <: AbstractGKGᵀ
 
     f::AbstractExtrapolation
 
+    parallelevaluation::Bool
+
 end
 
 
@@ -32,6 +34,7 @@ function Base.show(io::IO, k::symGKGᵀ)
 
 
     print(io, "Symmetric GKGᵀ product\n",
+              @sprintf("parallel evaluation set to %s\n", k.parallelevaluation),
               @sprintf("mass is %e\n", k.mass),
               @sprintf("accretion is %2.2f\n", k.accretion),
               @sprintf("wavelength is %4.1f", k.wavelength))
@@ -44,7 +47,7 @@ end
 # Constructor #
 ###############
 
-function symGKGᵀ(mass::Float64=1e8, accretion::Float64=0.5, wavelength::Float64=5000.0)
+function symGKGᵀ(mass::Float64=1e8, accretion::Float64=0.5, wavelength::Float64=5000.0, parallelevaluation::Bool=false)
 
     gₖ = PhysicalTransferFunction(mass=mass, accretion=accretion, wavelength=wavelength)
 
@@ -54,9 +57,9 @@ function symGKGᵀ(mass::Float64=1e8, accretion::Float64=0.5, wavelength::Float6
 
     support = LinRange(-30.0, 30.0, 251) # this must also be looked at again
 
-    y = pmap(t -> convkernel(; Xₖ = Xₖ, Xₗ = Xₖ, tᵢ = t, tⱼ = 0.0, ℓ = 1.0), support)
+    y = parallelevaluation ? pmap(t -> convkernel(; Xₖ = Xₖ, Xₗ = Xₖ, tᵢ = t, tⱼ = 0.0, ℓ = 1.0), support) : map(t -> convkernel(; Xₖ = Xₖ, Xₗ = Xₖ, tᵢ = t, tⱼ = 0.0, ℓ = 1.0), support)
 
-    symGKGᵀ(support, 1.0, Xₖ, mass, accretion, wavelength, CubicSplineInterpolation(support, y, extrapolation_bc=0.0))
+    symGKGᵀ(support, 1.0, Xₖ, mass, accretion, wavelength, CubicSplineInterpolation(support, y, extrapolation_bc=0.0), parallelevaluation)
 
 end
 
@@ -72,7 +75,7 @@ function (k::symGKGᵀ)(tᵢ, tⱼ, ℓ)
 
         k.ℓ = ℓ
 
-        y = pmap(t -> convkernel(; Xₖ = k.X, Xₗ = k.X, tᵢ = t, tⱼ = 0.0, ℓ = k.ℓ), k.support)
+        y = k.parallelevaluation ? pmap(t -> convkernel(; Xₖ = k.X, Xₗ = k.X, tᵢ = t, tⱼ = 0.0, ℓ = k.ℓ), k.support) : map(t -> convkernel(; Xₖ = k.X, Xₗ = k.X, tᵢ = t, tⱼ = 0.0, ℓ = k.ℓ), k.support)
 
         k.f = CubicSplineInterpolation(k.support, y, extrapolation_bc=0.0)
 
@@ -96,7 +99,7 @@ function test_GKGT()
     mass      = rand(Uniform(1e6, 9e9))
     accretion = rand()*0.9 + 0.1
 
-    k = symGKGᵀ(mass,accretion, w1);
+    k = symGKGᵀ(mass,accretion, w1, true)
 
     # all results obtained below must agree with each other
 
