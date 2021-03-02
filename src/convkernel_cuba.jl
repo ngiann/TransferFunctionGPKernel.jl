@@ -1,8 +1,3 @@
-using Optim, PyPlot
-
-using LinearAlgebra, Cuba, ProgressMeter, TransferFunctions
-
-
 κ(d, r) = exp(- d^2 / (2*r^2))
 
 
