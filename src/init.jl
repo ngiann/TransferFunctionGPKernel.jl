@@ -1,7 +1,7 @@
 using HCubature, SimpleLinearPiecewiseApproximation, TransferFunctions, Distributions, Printf
 
-@everywhere using SpecialFunctions, Interpolations
-@everywhere include("integrals.jl")
+using SpecialFunctions, Interpolations
+include("integrals.jl")
 
 include("GKGT.jl")
 include("convkernel.jl")

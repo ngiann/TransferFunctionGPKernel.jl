@@ -1,4 +1,4 @@
-@everywhere function convkernel(; Xₖ = Xₖ, Xₗ = Xₗ, tᵢ = tᵢ, tⱼ = tⱼ, ℓ = ℓ)
+function convkernel(; Xₖ = Xₖ, Xₗ = Xₗ, tᵢ = tᵢ, tⱼ = tⱼ, ℓ = ℓ)
 
     length(Xₖ) == length(Xₗ) ? nothing : error("Xₖ and Xₗ must be of same length")
 
