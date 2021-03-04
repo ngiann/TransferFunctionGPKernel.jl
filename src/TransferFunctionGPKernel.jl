@@ -2,7 +2,7 @@ module TransferFunctionGPKernel
 
     export symGKGᵀ, testme
 
-    using HCubature, SimpleLinearPiecewiseApproximation, TransferFunctions, Distributions, Printf
+    using HCubature, Cuba, SimpleLinearPiecewiseApproximation, TransferFunctions, Distributions, Printf
     using Distributed
 
     using SpecialFunctions, Interpolations
