@@ -57,7 +57,7 @@ function symGKGᵀ(mass::Float64=1e8, accretion::Float64=0.5, wavelength::Float6
 
     Xₖ = pw(collect(0.0:0.01:width(gₖ)), gₖ.(collect(0.0:0.01:width(gₖ))), numberofsegments)
 
-    support = LinRange(-30.0, 30.0, 251) # this must also be looked at again
+    support = LinRange(-50.0, 50.0, 271) # this must also be looked at again
 
     y = pmap(t -> convkernel(; Xₖ = Xₖ, Xₗ = Xₖ, tᵢ = t, tⱼ = 0.0, ℓ = 1.0), support, distributed = parallelevaluation)
 
