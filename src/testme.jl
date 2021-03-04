@@ -13,10 +13,10 @@ function testme(MAXTRIES=3)
     for i = 1:MAXTRIES
 
         lowery = rand() * 60 - 30
-        uppery = lowery + rand() * 60 - 30
+        uppery = lowery + rand() * 60
 
         lowerx = rand() * 60 - 30
-        upperx = lowerx + rand() * 60 - 30
+        upperx = lowerx + rand() * 60
 
         ℓ = rand() * (5.0 - 0.01) + 0.01
 
@@ -29,11 +29,11 @@ function testme(MAXTRIES=3)
         # 1 #
         #####
 
-        local out = verify_1(lowery = -2.1, uppery = 0.11, lowerx = -2, upperx = 3.1, ℓ=1.6)
+        local out = verify_1(lowery = lowery, uppery = uppery, lowerx = lowerx, upperx = upperx, ℓ=ℓ)
         display(out)
         @assert(abs(out[1]-out[3]) < tol)
 
-        out = verify_sub_1(b=-1.1, c=-0.2, d=0.52, ℓ=0.4)
+        out = verify_sub_1(b=b, c=c, d=d, ℓ=ℓ)
         display(out)
         @assert(abs(out[1]-out[2]) < tol)
         @assert(abs(out[1]-out[3]) < tol)
@@ -43,15 +43,15 @@ function testme(MAXTRIES=3)
         # 2 #
         #####
 
-        out = verify_2(lowery = -2.1, uppery = 0.11, lowerx = -2, upperx = 3.1, ℓ=1.6)
+        out = verify_2(lowery = lowery, uppery = uppery, lowerx = lowerx, upperx = upperx, ℓ=ℓ)
         display(out)
         @assert(abs(out[1]-out[3]) < tol)
 
-        out = verify_sub_2a(a=-1.2,c=-0.25,d=0.9, ℓ=0.9)
+        out = verify_sub_2a(a=a,c=c,d=d, ℓ=ℓ)
         display(out)
         @assert(abs(out[1]-out[2]) < tol)
 
-        out = verify_sub_2b(a=-1.2,c=-0.25,d=0.9, ℓ=0.9)
+        out = verify_sub_2b(a=a,c=c,d=d, ℓ=ℓ)
         display(out)
         @assert(abs(out[1]-out[2]) < tol)
 
@@ -60,15 +60,15 @@ function testme(MAXTRIES=3)
         # 3 #
         #####
 
-        out = verify_3(lowery = -2.1, uppery = 0.11, lowerx = -2, upperx = 3.1, ℓ=1.6)
+        out = verify_3(lowery = lowery, uppery = uppery, lowerx = lowerx, upperx = upperx, ℓ=ℓ)
         display(out)
         @assert(abs(out[1]-out[3]) < tol)
 
-        out = verify_sub_3a(a=-1.2,c=-0.25,d=0.9, ℓ=0.9)
+        out = verify_sub_3a(a=a,c=c,d=d, ℓ=ℓ)
         display(out)
         @assert(abs(out[1]-out[2]) < tol)
 
-        out = verify_sub_3b(a=-1.2,c=-0.25,d=0.9, ℓ=0.9)
+        out = verify_sub_3b(a=a,c=c,d=d, ℓ=ℓ)
         display(out)
         @assert(abs(out[1]-out[2]) < tol)
 
