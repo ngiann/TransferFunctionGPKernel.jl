@@ -11,7 +11,9 @@ function symmetricconvolution_cuba(; g = g, κ = κ, tᵢ = tᵢ, tⱼ = tⱼ)
 
     auxiliary(t) = ((2*offset)^2)*targetintegral(trans.(t))
 
-    resultquad = divonne( (t,out) -> out[1] = auxiliary(t), 2, 1, maxevals = 1_000_000, rtol=1e-6)
+    resultquad = divonne( (t,out) -> out[1] = auxiliary(t), 2, 1, maxevals = 30_000_000, rtol=1e-6)
+
+    display(resultquad)
 
     resultquad.integral[1]
 
@@ -43,7 +45,9 @@ function nonsymmetricconvolution(; gₖ = gₖ, gₗ = gₗ, κ = κ, tᵢ = t�
 
     auxiliary(t) = ((2*offset)^2)*targetintegral(trans.(t))
 
-    resultquad = divonne( (t,out) -> out[1] = auxiliary(t), 2, 1, maxevals = 1_000_000, rtol=1e-6)
+    resultquad = divonne( (t,out) -> out[1] = auxiliary(t), 2, 1, maxevals = 30_000_000, rtol=1e-6)
+
+    display(resultquad)
 
     resultquad.integral[1]
 
