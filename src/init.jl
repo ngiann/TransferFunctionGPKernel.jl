@@ -1,4 +1,4 @@
-using HCubature, SimpleLinearPiecewiseApproximation, TransferFunctions, Distributions, Printf
+using HCubature, Cuba, SimpleLinearPiecewiseApproximation, TransferFunctions, Printf
 
 using SpecialFunctions, Interpolations
 include("integrals.jl")
