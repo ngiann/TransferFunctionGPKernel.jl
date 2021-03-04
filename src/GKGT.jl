@@ -93,7 +93,7 @@ end
 #  Verification   #
 # ⋆ ⋆ ⋆ ⋆ ⋆ ⋆ ⋆ ⋆ #
 
-function test_GKGT()
+function test_GKGT(tol=1e-1)
 
     t1, t2    = randn(2)*3
     ℓ         = rand()*5
@@ -126,8 +126,8 @@ function test_GKGT()
 
     display([a1; a11; a2; a3; a4])
 
-    tol = 1e-2
 
+    
     (abs(a1 - a11) < tol) &&
     (abs(a1 - a2)  < tol) &&
     (abs(a1 - a3)  < tol) &&
