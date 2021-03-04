@@ -2,7 +2,7 @@ function testme(MAXTRIES=3; tol=0.1)
 
     # Verify symmetric kernel calculation by comparing with numerical integration results
     for i = 1:MAXTRIES
-        @assert(test_GKGT(tol))
+        @assert(test_GKGT_random(tol=tol))
     end
 
 

@@ -93,14 +93,20 @@ end
 #  Verification   #
 # ⋆ ⋆ ⋆ ⋆ ⋆ ⋆ ⋆ ⋆ #
 
-function test_GKGT(tol=1e-1)
+function test_GKGT_random( ; tol=1e-1)
 
     t1, t2    = randn(2)*3
-    ℓ         = rand()*5
-    w1        = rand()*7000+3000
-    mass      = rand()*(9e9-1e6) + 1e6
+    ℓ         = rand()*(4.95 - 0.05) + 0.05
+    w1        = rand()*(10_000 - 3_000) + 3_000.0
+    mass      = exp(rand()*(log(1e9) - log(1e6)) + log(1e6))
     accretion = rand()*0.9 + 0.05
 
+    test_GKGT(; t1=t1, t2=t2, ℓ=ℓ, w1=w1, mass=mass,
+                accretion=accretion, tol=tol)
+
+end
+
+function test_GKGT(;t1=t1,t2=t2,ℓ=ℓ,w1=w1,mass=mass,accretion=accretion, tol=tol)
 
     @printf("times: t1 = %.4f, t2 = %.4f\n", t1, t2)
     @printf("ℓ = %.4f\n", ℓ)
@@ -127,7 +133,7 @@ function test_GKGT(tol=1e-1)
     display([a1; a11; a2; a3; a4])
 
 
-    
+
     (abs(a1 - a11) < tol) &&
     (abs(a1 - a2)  < tol) &&
     (abs(a1 - a3)  < tol) &&
