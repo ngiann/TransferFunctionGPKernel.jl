@@ -15,7 +15,11 @@ SpecialFunctions = "276daf66-3868-5448-9aa4-cd146d93841b"
 TransferFunctions = "cff4ffb7-3881-4a2c-8cec-a201ef7afd5c"
 
 [compat]
+<<<<<<< HEAD
 julia = "1.5.3"
+=======
+julia = "1.5-1.6"
+>>>>>>> f04573a8fb5ccdcab18c19163de75e6dd9a41721
 
 [extras]
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
