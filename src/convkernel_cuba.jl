@@ -3,7 +3,7 @@
 
 function symmetricconvolution_cuba(; g = g, κ = κ, tᵢ = tᵢ, tⱼ = tⱼ)
 
-    offset = 35
+    offset = 50
 
     targetintegral(t) = g(tⱼ-t[2]) * g(tᵢ-t[1]) * κ(t[1]-t[2])
 
@@ -35,7 +35,7 @@ end
 
 function nonsymmetricconvolution(; gₖ = gₖ, gₗ = gₗ, κ = κ, tᵢ = tᵢ, tⱼ = tⱼ)
 
-    offset = 35
+    offset = 50
 
     targetintegral(t) = gₖ(tᵢ-t[2]) * gₗ(tⱼ-t[1]) * κ(t[1]-t[2])
 
