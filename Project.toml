@@ -1,9 +1,10 @@
 name = "TransferFunctionGPKernel"
 uuid = "57bf45fe-03ed-46c7-9681-fa33975444fc"
 authors = ["ngiann <ngiann@gmail.com> and contributors"]
-version = "0.1.03"
+version = "0.1.45"
 
 [deps]
+Cuba = "8a292aeb-7a57-582c-b821-06e4c11590b1"
 Distributed = "8ba89e20-285c-5b6f-9357-94700520ee1b"
 Distributions = "31c24e10-a181-5473-b8eb-7969acd0382f"
 HCubature = "19dc6840-f33b-545b-b366-655c7e3ffd49"
@@ -15,6 +16,9 @@ TransferFunctions = "cff4ffb7-3881-4a2c-8cec-a201ef7afd5c"
 
 [compat]
 SpecialFunctions = "1.3"
+Interpolations = "0.13"
+HCubature = "1.5"
+Cuba = "2.2"
 julia = "1.5"
 
 [extras]
