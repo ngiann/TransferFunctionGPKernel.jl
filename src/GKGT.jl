@@ -10,6 +10,8 @@ mutable struct symGKGᵀ <: AbstractGKGᵀ
 
     ℓ::Float64
 
+    g::PhysicalTransferFunction
+
     X::Array{Array{Float64, 1}}
 
     mass::Float64
@@ -53,13 +55,13 @@ function symGKGᵀ(mass::Float64=1e8, accretion::Float64=0.5, wavelength::Float6
 
     numberofsegments = 31 # crucial parameter of approximation
 
-    Xₖ = pw(collect(0.0:0.01:50.0), gₖ.(collect(0.0:0.01:50.0)), numberofsegments) # assume that after 50.0 transfer function has petered off
+    Xₖ = pw(collect(0.0:0.01:width(gₖ)), gₖ.(collect(0.0:0.01:width(gₖ))), numberofsegments)
 
     support = LinRange(-30.0, 30.0, 251) # this must also be looked at again
 
-    y = parallelevaluation ? pmap(t -> convkernel(; Xₖ = Xₖ, Xₗ = Xₖ, tᵢ = t, tⱼ = 0.0, ℓ = 1.0), support) : map(t -> convkernel(; Xₖ = Xₖ, Xₗ = Xₖ, tᵢ = t, tⱼ = 0.0, ℓ = 1.0), support)
+    y = pmap(t -> convkernel(; Xₖ = Xₖ, Xₗ = Xₖ, tᵢ = t, tⱼ = 0.0, ℓ = 1.0), support, distributed = parallelevaluation)
 
-    symGKGᵀ(support, 1.0, Xₖ, mass, accretion, wavelength, CubicSplineInterpolation(support, y, extrapolation_bc=0.0), parallelevaluation)
+    symGKGᵀ(support, 1.0, gₖ, Xₖ, mass, accretion, wavelength, CubicSplineInterpolation(support, y, extrapolation_bc=0.0), parallelevaluation)
 
 end
 
@@ -75,7 +77,7 @@ function (k::symGKGᵀ)(tᵢ, tⱼ, ℓ)
 
         k.ℓ = ℓ
 
-        y = k.parallelevaluation ? pmap(t -> convkernel(; Xₖ = k.X, Xₗ = k.X, tᵢ = t, tⱼ = 0.0, ℓ = k.ℓ), k.support) : map(t -> convkernel(; Xₖ = k.X, Xₗ = k.X, tᵢ = t, tⱼ = 0.0, ℓ = k.ℓ), k.support)
+        y = pmap(t -> convkernel(; Xₖ = k.X, Xₗ = k.X, tᵢ = t, tⱼ = 0.0, ℓ = k.ℓ), k.support, distributed = k.parallelevaluation)
 
         k.f = CubicSplineInterpolation(k.support, y, extrapolation_bc=0.0)
 
