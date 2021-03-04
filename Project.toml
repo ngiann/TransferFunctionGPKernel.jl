@@ -1,7 +1,7 @@
 name = "TransferFunctionGPKernel"
 uuid = "57bf45fe-03ed-46c7-9681-fa33975444fc"
 authors = ["ngiann <ngiann@gmail.com> and contributors"]
-version = "0.1.333"
+version = "0.1.444"
 
 [deps]
 Cuba = "8a292aeb-7a57-582c-b821-06e4c11590b1"
@@ -15,7 +15,7 @@ SpecialFunctions = "276daf66-3868-5448-9aa4-cd146d93841b"
 TransferFunctions = "cff4ffb7-3881-4a2c-8cec-a201ef7afd5c"
 
 [compat]
-julia = "1.5"
+julia = "1.5-1.6"
 
 [extras]
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
