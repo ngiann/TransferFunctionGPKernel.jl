@@ -105,7 +105,7 @@ function test_GKGT()
     @printf("times: t1 = %.4f, t2 = %.4f\n", t1, t2)
     @printf("ℓ = %.4f\n", ℓ)
     @printf("wavelength = %.4f\n", w1)
-    @printf("mass = %.4f\n", mass)
+    @printf("mass = %.4e\n", mass)
     @printf("accretion = %.4f\n", accretion)
 
 
