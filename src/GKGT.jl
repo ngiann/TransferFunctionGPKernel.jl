@@ -99,15 +99,24 @@ function test_GKGT()
     ℓ         = rand()*5
     w1        = rand()*7000+3000
     mass      = rand()*(9e9-1e6) + 1e6
-    accretion = rand()*0.9 + 0.1
+    accretion = rand()*0.9 + 0.05
 
-    k = symGKGᵀ(mass,accretion, w1, true)
+
+    @printf("times: t1 = %.4f, t2 = %.4f\n", t1, t2)
+    @printf("ℓ = %.4f\n", ℓ)
+    @printf("wavelength = %.4f\n", w1)
+    @printf("mass = %.4f\n", mass)
+    @printf("accretion = %.4f\n", accretion)
+
+
+    k1 = symGKGᵀ(mass,accretion, w1, true)
+    k2 = symGKGᵀ(mass,accretion, w1, false)
 
     # all results obtained below must agree with each other
 
-    a1 = k(t1, t2, ℓ)
+    a1 = k1(t1, t2, ℓ)
 
-    a11 = k(t2, t1, ℓ)
+    a11 = k2(t2, t1, ℓ)
 
     a2 = test_approx_physical(t1, t2, ℓ; mass = mass, accretion = accretion, wavelengths=[w1; w1])
 
