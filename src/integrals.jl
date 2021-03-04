@@ -161,7 +161,7 @@ function verify_sub_2a(; a = a, c = c, d = d, ℓ = ℓ)
 
 
     # numerical verification via Cuba.jl libary
-    h = Cuba.vegas((x, out) -> out[1] = (d-c) * f(c + (d-c)*x[1]), 1, 1, maxevals=1_000_000)
+    h = Cuba.vegas((x, out) -> out[1] = (d-c) * f(c + (d-c)*x[1]), 1, 1, maxevals=3_000_000)
 
     display(h)
 
