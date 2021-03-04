@@ -98,7 +98,7 @@ function test_GKGT()
     t1, t2    = randn(2)*3
     ℓ         = rand()*5
     w1        = rand()*7000+3000
-    mass      = rand(Uniform(1e6, 9e9))
+    mass      = rand()*(9e9-1e6) + 1e6
     accretion = rand()*0.9 + 0.1
 
     k = symGKGᵀ(mass,accretion, w1, true)
