@@ -12,13 +12,13 @@ function testme(MAXTRIES=3)
 
     for i = 1:MAXTRIES
 
-        lowery = rand(Uniform(-30.0, 30.0))
-        uppery = lowery + rand(Uniform(-30.0, 30.0))
+        lowery = rand() * 60 - 30
+        uppery = lowery + rand() * 60 - 30
 
-        lowerx = rand(Uniform(-30.0, 30.0))
-        upperx = lowerx + rand(Uniform(-30.0, 30.0))
+        lowerx = rand() * 60 - 30
+        upperx = lowerx + rand() * 60 - 30
 
-        ℓ = rand(Uniform(0.01, 6.0))
+        ℓ = rand() * (5.0 - 0.01) + 0.01
 
         a = lowerx
         b = upperx
