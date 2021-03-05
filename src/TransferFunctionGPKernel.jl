@@ -12,6 +12,8 @@ module TransferFunctionGPKernel
     include("GKGT.jl")
     include("convkernel.jl")
     include("convkernel_cuba.jl")
-    include("testme.jl")
+    
+    include("test_GKGT.jl")
+    include("GKGT.jl")
 
 end
