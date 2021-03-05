@@ -1,7 +1,7 @@
 name = "TransferFunctionGPKernel"
 uuid = "57bf45fe-03ed-46c7-9681-fa33975444fc"
 authors = ["ngiann <ngiann@gmail.com> and contributors"]
-version = "0.1.51"
+version = "0.1.52"
 
 [deps]
 Cuba = "8a292aeb-7a57-582c-b821-06e4c11590b1"

@@ -35,7 +35,7 @@ end
 function Base.show(io::IO, k::symGKGᵀ)
 
 
-    print(io, "Symmetric GKGᵀ product\n",
+    print(io, "Symmetric GKGᵀ product (0.1.52)\n",
               @sprintf("parallel evaluation set to %s\n", k.parallelevaluation),
               @sprintf("mass is %e\n", k.mass),
               @sprintf("accretion is %2.2f\n", k.accretion),
@@ -57,7 +57,7 @@ function symGKGᵀ(mass::Float64=1e8, accretion::Float64=0.5, wavelength::Float6
 
     Xₖ = pw(collect(0.0:0.01:width(gₖ)), gₖ.(collect(0.0:0.01:width(gₖ))), numberofsegments)
 
-    support = LinRange(-50.0, 50.0, 271) # this must also be looked at again
+    support = LinRange(-30.0, 30.0, 271) # this must also be looked at again
 
     y = pmap(t -> convkernel(; Xₖ = Xₖ, Xₗ = Xₖ, tᵢ = t, tⱼ = 0.0, ℓ = 1.0), support, distributed = parallelevaluation)
 
